@@ -1,0 +1,63 @@
+# ===== 密钥 =====
+.env
+.env.*
+!.env.example
+*.key
+*.pem
+secrets/
+
+# ===== Python =====
+__pycache__/
+*.py[cod]
+*$py.class
+.venv/
+venv/
+env/
+*.egg-info/
+.pytest_cache/
+.ruff_cache/
+.ipynb_checkpoints/
+
+# ===== Node =====
+node_modules/
+dist/
+build/
+.vite/
+*.local
+
+# ===== PHP / Composer =====
+vendor/
+composer.lock.bak
+.phpunit.cache/
+.php-cs-fixer.cache
+
+# ===== 数据（体积大 / 版权，用脚本重新拉取）=====
+data/
+data/raw/
+data/pdf/
+data/cache/
+*.pdf
+*.xlsx
+*.xls
+
+# ===== 向量库 / 数据库本地文件 =====
+*.db
+*.sqlite
+*.sqlite3
+chroma/
+qdrant_storage/
+.weaviate/
+
+# ===== 日志与追踪 =====
+logs/
+*.log
+traces/
+runs/
+
+# ===== 编辑器 / 系统 =====
+.idea/
+.vscode/
+*.swp
+.DS_Store
+Thumbs.db
+desktop.ini
