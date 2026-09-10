@@ -1,0 +1,10 @@
+{
+  "model": "deepseek-v4-flash",
+  "messages": [
+    { "role": "system", "content": "你是财务分析助手" },
+    { "role": "user", "content": "用一句话解释什么是归母净利润" }
+  ],
+  "temperature": 0,
+  "stream": true,
+  "stream_options": { "include_usage": true }
+}
