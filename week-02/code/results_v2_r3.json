@@ -1,0 +1,16 @@
+{
+  "prompt": "v2",
+  "repeat": 3,
+  "accept_set_cases": 5,
+  "stable": 24,
+  "passed_runs": 72,
+  "total_runs": 72,
+  "total_cases": 24,
+  "field_ok": 288,
+  "field_total": 288,
+  "usage": {
+    "prompt_tokens": 38619,
+    "completion_tokens": 11910
+  },
+  "failures": []
+}
