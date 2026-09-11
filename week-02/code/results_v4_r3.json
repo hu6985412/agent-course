@@ -1,0 +1,29 @@
+{
+  "prompt": "v4",
+  "repeat": 3,
+  "accept_set_cases": 5,
+  "stable": 22,
+  "passed_runs": 70,
+  "total_runs": 72,
+  "total_cases": 24,
+  "field_ok": 286,
+  "field_total": 288,
+  "usage": {
+    "prompt_tokens": 53523,
+    "completion_tokens": 15534
+  },
+  "failures": [
+    {
+      "id": 6,
+      "errors": [
+        "[2] ticket0.intent 期望 '仅退款' / 实际 '退货'"
+      ]
+    },
+    {
+      "id": 21,
+      "errors": [
+        "[0] ticket0.intent 期望 '仅退款' / 实际 '部分退款'"
+      ]
+    }
+  ]
+}
