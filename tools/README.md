@@ -58,6 +58,35 @@ set "MODEL=your-model-name"
 > 脚本**不设项目路径**：双击后它停在自己所在的目录，你再自己 `cd` 到当周的文件夹。
 > 这是刻意的——把本机仓库绝对路径写进模板，等于把个人目录结构公开，还容易误提交。
 
+### 第 1.5 步 · 可选：指定一个 Python 3.9+（3.8 用户建议做）
+
+bat 里还有一个**可选**参数，默认留空：
+
+```bat
+set "PYTHON_HOME="
+```
+
+| 项 | 说明 |
+|---|---|
+| **默认值** | 空 = 用你系统里的 `python` |
+| **什么时候要填** | `python --version` 显示低于 3.9 |
+| **填什么** | 装了 `python.exe` 的**那个文件夹**，不是 `python.exe` 本身 |
+| **为什么要填** | Python 3.8 已于 2024-10 停止维护。W05 的 pgvector、W08 的 LangGraph 在 3.8 上已经装不上了 |
+
+不确定自己有哪些 Python，先列出来：
+
+```powershell
+where.exe python
+```
+
+填好之后，脚本启动会多打一行，用它确认生效：
+
+```
+    python      = Python 3.13.12
+```
+
+> ⚠️ **这不是项目路径。** 本脚本刻意不设任何项目目录（见上一节）。`PYTHON_HOME` 是 **Python 解释器**的安装目录——纯本机信息，**只填在你复制到仓库外的那份 bat 里**，不要提交。
+
 ### 第 2 步 · 保存，注意编码
 
 | 项 | 要求 | 为什么 |
@@ -161,6 +190,8 @@ cmd 里 set  →  启动 powershell.exe（子进程）  →  自动继承  →  
 | 中文乱码 + `ConvertFrom-Json` 报错 | `.bat` 已自动设好 UTF-8；如果你是在别的窗口跑的，手动执行一次 `[Console]::OutputEncoding = [System.Text.Encoding]::UTF8`。根因见[第 4 步](#第-4-步--确认-utf-8-已生效) |
 | 命令没输出也没报错 | 别用 `-s`，用 `-sS`。`-s` 会把错误信息一起吞掉 |
 | Python 打印中文报 `UnicodeEncodeError` | `PYTHONUTF8=1` 没设上；若在别的窗口跑，手动 `$env:PYTHONUTF8=1` |
+| 填了 `PYTHON_HOME`，`python --version` 却没变 | 填的是**文件夹**不是 `python.exe`；或那目录下确实没有 `python.exe`——脚本会打 `[!] PYTHON_HOME is set but python.exe was not found in it.` |
+| 同一个窗口反复双击 bat | PATH 会被重复追加（不影响功能，但越来越长）。每次新开窗口双击即可 |
 | 改了 `chcp 65001` 后 bat 输出怪字符 | 你用的是 Windows 7/8，或往脚本里加了中文注释。把 `chcp` 那行注释掉即可——PowerShell 那三行才是关键 |
 
 ## 许可
