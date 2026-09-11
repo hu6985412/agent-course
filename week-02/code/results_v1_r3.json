@@ -1,0 +1,38 @@
+{
+  "prompt": "v1",
+  "repeat": 3,
+  "accept_set_cases": 5,
+  "stable": 17,
+  "passed_runs": 54,
+  "total_runs": 60,
+  "total_cases": 20,
+  "field_ok": 225,
+  "field_total": 228,
+  "usage": {
+    "prompt_tokens": 22017,
+    "completion_tokens": 11560
+  },
+  "failures": [
+    {
+      "id": 5,
+      "errors": [
+        "[1] ticket0.intent 期望 '仅退款' / 实际 '退货'"
+      ]
+    },
+    {
+      "id": 13,
+      "errors": [
+        "[0] tickets 数量 期望 1 / 实际 0",
+        "[1] tickets 数量 期望 1 / 实际 0",
+        "[2] tickets 数量 期望 1 / 实际 0"
+      ]
+    },
+    {
+      "id": 14,
+      "errors": [
+        "[0] ticket0.amount 期望 None / 实际 299.0",
+        "[2] ticket0.amount 期望 None / 实际 299.0"
+      ]
+    }
+  ]
+}
