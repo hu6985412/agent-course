@@ -1,0 +1,23 @@
+{
+  "prompt": "v3",
+  "repeat": 3,
+  "accept_set_cases": 5,
+  "stable": 23,
+  "passed_runs": 71,
+  "total_runs": 72,
+  "total_cases": 24,
+  "field_ok": 284,
+  "field_total": 284,
+  "usage": {
+    "prompt_tokens": 85059,
+    "completion_tokens": 14231
+  },
+  "failures": [
+    {
+      "id": 2,
+      "errors": [
+        "[2] tickets 数量 期望 1 / 实际 0"
+      ]
+    }
+  ]
+}
