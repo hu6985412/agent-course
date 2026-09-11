@@ -47,6 +47,17 @@ set "BASE_URL=https://your-relay.com/v1"
 set "MODEL=your-model-name"
 REM ---------- >>> END OF EDITABLE BLOCK <<< ----------
 
+REM ---------- >>> OPTIONAL: point at a newer Python <<< ----------
+REM Leave this EMPTY to keep your system python. Fill it in ONLY if your
+REM system python is older than 3.9 -- from week-05 on, packages such as
+REM pgvector and langgraph refuse to install on 3.8 (end of life Oct 2024).
+REM The value is the FOLDER that holds python.exe, not python.exe itself.
+REM Example (yours will differ):
+REM   C:\Users\you\AppData\Local\Programs\Python\Python313
+set "PYTHON_HOME="
+if defined PYTHON_HOME set "PATH=%PYTHON_HOME%;%PATH%"
+REM ---------- >>> END OF OPTIONAL BLOCK <<< ----------
+
 REM --- UTF-8, part 1/3: switch cmd's own code page -------------------------
 REM Only affects this window. If you are on Windows 7/8 or see weird output,
 REM put REM in front of the next line -- the PowerShell settings below alone
@@ -71,6 +82,7 @@ echo   [env] loaded into THIS window only
 echo     BASE_URL    = %BASE_URL%
 echo     MODEL       = %MODEL%
 echo     API_KEY     = %API_KEY:~0,6%......
+for /f "tokens=*" %%p in ('python --version 2^>^&1') do echo     python      = %%p
 echo.
 
 if "%API_KEY%"=="PASTE_YOUR_KEY_HERE" (
@@ -86,6 +98,14 @@ if "%BASE_URL%"=="https://your-relay.com/v1" (
 if "%MODEL%"=="your-model-name" (
   echo   [!] MODEL is still the placeholder - edit this .bat first.
   echo.
+)
+
+if defined PYTHON_HOME (
+  if not exist "%PYTHON_HOME%\python.exe" (
+    echo   [!] PYTHON_HOME is set but python.exe was not found in it.
+    echo       Check the folder, or clear the value to use system python.
+    echo.
+  )
 )
 
 echo   Next: cd to the week folder, e.g.
