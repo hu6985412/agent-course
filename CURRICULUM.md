@@ -51,6 +51,7 @@
 | **做什么** | 给 W3 的 Agent 加步骤上限、自动摘要压缩、工具调用日志写 MySQL；做「查订单 → 查物流 → 判断退款 → 执行退款」全自动；故意制造一次死循环验证防护 |
 | **验收** | 任务自动跑完；数据库能完整回放每一步；死循环被拦住且日志可查 |
 | **产出** | 文章 + 带防护与审计的 Agent **（里程碑 M2）** |
+| **数据模型** | 审计落库复用预置 `agent_runtime` 库：`runs`(主表, 含 token/成本/状态) / `steps`(ReAct 迭代, span_type=thought\|llm\|tool, tool_args JSON + observation + status 含 repeat_blocked) / `messages`(规范消息流, 回放用) / `agents`(需先 seed 一行, runs.agent_id 非空)。Layer2 摘要压缩缺 `messages.kind` 标记 → 实操前补 `kind`+`metadata` |
 
 ## W05 · Embedding 与向量检索
 
