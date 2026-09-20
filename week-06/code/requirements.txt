@@ -1,0 +1,6 @@
+openai
+psycopg2-binary
+numpy
+jieba
+rank_bm25
+sentence-transformers  # 可选：本地 cross-encoder 重排（RERANKER=cross 时启用）
