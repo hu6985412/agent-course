@@ -18,7 +18,7 @@
 | W03 | Tool Use：手搓 Agent 循环 | ✅ | 2026-09-11 | ☑ | ☑ | 主线完成；PHP/Prism 重写推迟 W09 |
 | W04 | ReAct、记忆与循环防护 | ✅ | 2026-09-14 | ☑ | ☑ | 里程碑 M2 |
 | W05 | Embedding 与向量检索 | ✅ | 2026-09-15 | ☑ | ☑ | |
-| W06 | RAG 完整链路 | ⏸️ | — | ☐ | ☐ | |
+| W06 | RAG 完整链路 | ✅ | 2026-09-20 | ☑ | ☑ | 真 cross-encoder 验证；探针#3未翻盘诚实修正 |
 | W07 | 进阶 RAG：解析、改写、上下文工程 | ⏸️ | — | ☐ | ☐ | 里程碑 M3 |
 | W08 | LangGraph：把循环变成工程 | ⏸️ | — | ☐ | ☐ | |
 | W09 | PHP 落地：领域 Agent MVP | ⏸️ | — | ☐ | ☐ | 差异化周 |
@@ -107,3 +107,16 @@
 - **下周注意**：W06 加 BM25 通路做 RRF 融合；30 题测试集对比三方案（纯向量/纯 BM25/混合+重排），准确率做表；答案带引用出处
 - **文章状态**：☑ 草稿（待回填真实输出+定标题） ☐ 已发知乎
 - **代码状态**：☑ 已跑通（amber 本机 4 chunks 正式库 + 实验 A/B 实测） ☐ 已提交
+
+### W06 · RAG 完整链路（2026-09-20）
+
+- **实际投入**：约 14 h
+- **跑通了**：财报风格语料(9 chunks) + 手搓 BM25(Okapi) + RRF 融合(k=60) + 复用 W05 Dense(百炼+pgvector) + 真 cross-encoder 重排(双模式,单例缓存) + 三方案评测 + 判别力探针(三列 BM25/Hybrid/Rerank) + 引用落库(generate.py 写 w06rag.answers)
+- **验收实质通过（Query改写代码未做，诚实标注）**：三方案对比表✅ / 成本账(多花重排换多少准确率)✅ / 多路召回+RRF+Rerank+引用落库✅ / Query改写仅讲概念留W07⚠️
+- **真实踩坑 5 条**：语料太小相近词同块→扩建9chunks / 探针子串误判→改比目标块干扰块排名 / gp17建库role postgres不存在+template1跳板 / bat PYTHON_HOME空→import jieba失败(沙箱代装managed venv) / 真cross CPU 23s vs GPU 100ms认知
+- **诚实修正（预测被打脸）**：① 探针#3 Hybrid 未翻盘(BM25/Dense都分不清“转股价”语义) ② 真cross MRR 0.983=fallback<Hybrid 1.000(小语料rerank噪声>信号) ③ 三道防线救不了语义相似块，字段级归一化唯一解(W09伏笔坐实)
+- **选型**：百炼 qwen3.7-text-embedding-flash + pgvector(gp17/w06rag) 复用；bge-reranker-v2-m3 真cross(但CPU慢，生产需GPU/轻量reranker)
+- **卡住/如实**：Query改写代码未落地(留W07)；语义切分留W07；字段级归一化留W09；真cross生产化决策留毕业项目
+- **下周注意**：W07 进阶RAG(HyDE/指代消解/PDF解析/上下文压缩)；真cross CPU太慢用查询扩展/上下文压缩缓解，根治在W09字段级归一化
+- **文章状态**：☑ 草稿 ☐ 已发知乎
+- **代码状态**：☑ 已跑通(amber 本机 BM25/Hybrid/真Rerank 三方案 + 引用落库) ☐ 已提交
