@@ -1,0 +1,35 @@
+[
+  {"q": "扣非净利润 是什么意思", "expected_doc": ["指标定义"], "type": "exact_token"},
+  {"q": "赎回条款 触发条件", "expected_doc": ["赎回与回售条款"], "type": "exact_token"},
+  {"q": "转股价下修 流程", "expected_doc": ["转股价与下修"], "type": "exact_token"},
+  {"q": "毛利率 怎么算", "expected_doc": ["指标定义"], "type": "exact_token"},
+  {"q": "回售条款 持有人权利", "expected_doc": ["赎回与回售条款"], "type": "exact_token"},
+  {"q": "AAA 评级 含义", "expected_doc": ["信用评级与担保"], "type": "exact_token"},
+  {"q": "票面利率 第一年多少", "expected_doc": ["票面利率与期限"], "type": "exact_token"},
+  {"q": "转股期 从什么时候开始", "expected_doc": ["转股价与下修"], "type": "exact_token"},
+  {"q": "担保 范围 包括什么", "expected_doc": ["信用评级与担保"], "type": "exact_token"},
+  {"q": "到期赎回 价格", "expected_doc": ["赎回与回售条款"], "type": "exact_token"},
+  {"q": "营业利润 定义", "expected_doc": ["指标定义"], "type": "exact_token"},
+  {"q": "质押 率 上限", "expected_doc": ["信用评级与担保"], "type": "exact_token"},
+
+  {"q": "公司主业赚的钱，去掉政府补贴和卖资产的一次性收益后还剩多少", "expected_doc": ["指标定义"], "type": "semantic"},
+  {"q": "债券持有人在股价长期低迷时能反过来把债退给公司吗", "expected_doc": ["赎回与回售条款"], "type": "semantic"},
+  {"q": "公司营业收入减去成本后还剩多少比例算毛利", "expected_doc": ["指标定义"], "type": "semantic"},
+  {"q": "转债转换成股票的价格是怎么定的", "expected_doc": ["转股价与下修"], "type": "semantic"},
+  {"q": "发行人能不能在股价涨太多时强迫赎回转债", "expected_doc": ["赎回与回售条款"], "type": "semantic"},
+  {"q": "华瑞新材去年主营造血多少，剔除非经常性损益", "expected_doc": ["年报片段"], "type": "semantic"},
+  {"q": "每年付一次利息是怎么安排的", "expected_doc": ["票面利率与期限"], "type": "semantic"},
+  {"q": "评级机构觉得这家公司违约风险怎样", "expected_doc": ["信用评级与担保"], "type": "semantic"},
+
+  {"q": "我想知道扣非净利润到底该怎么理解", "expected_doc": ["指标定义"], "type": "question"},
+  {"q": "请问赎回和回售有什么区别", "expected_doc": ["赎回与回售条款"], "type": "question"},
+  {"q": "转股价下修需要谁同意", "expected_doc": ["转股价与下修"], "type": "question"},
+  {"q": "公司的净利率是怎么计算的", "expected_doc": ["指标定义"], "type": "question"},
+  {"q": "这笔债的期限一共几年", "expected_doc": ["票面利率与期限"], "type": "question"},
+  {"q": "股东提供的担保是不是连带责任的", "expected_doc": ["信用评级与担保"], "type": "question"},
+
+  {"q": "什么情况会触发赎回", "expected_doc": ["赎回与回售条款"], "type": "antonym"},
+  {"q": "什么情况持有人能回售", "expected_doc": ["赎回与回售条款"], "type": "antonym"},
+  {"q": "避免触发赎回的情形有哪些", "expected_doc": ["赎回与回售条款"], "type": "antonym"},
+  {"q": "转股价值太低时公司会怎么做", "expected_doc": ["转股价与下修"], "type": "antonym"}
+]
