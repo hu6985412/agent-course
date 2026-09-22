@@ -3,7 +3,7 @@ REM ============================================================================
 REM  start-env-windows.bat  --  one-click LLM env loader (Windows ONLY)
 REM
 REM  WHAT IT DOES
-REM    Sets API_KEY / BASE_URL / MODEL for THIS window only, fixes the console
+REM    Sets API_KEY / BASE_URL / chat+embedding+rerank MODEL names, fixes console,
 REM    to real UTF-8, then opens a shell. Nothing is written to the registry
 REM    and nothing is written to disk. Close the window and it is all gone.
 REM
@@ -79,9 +79,12 @@ if %errorlevel%==0 (
 
 echo.
 echo   [env] loaded into THIS window only
-echo     BASE_URL    = %BASE_URL%
-echo     MODEL       = %MODEL%
-echo     API_KEY     = %API_KEY:~0,6%......
+echo     BASE_URL        = %BASE_URL%
+echo     CHAT_MODEL      = %CHAT_MODEL%
+echo     EMBEDDING_MODEL = %EMBEDDING_MODEL%
+echo     RERANK_MODEL    = %RERANK_MODEL%
+echo     MODEL(alias)    = %MODEL%
+echo     API_KEY         = %API_KEY:~0,6%......
 for /f "tokens=*" %%p in ('python --version 2^>^&1') do echo     python      = %%p
 echo.
 
@@ -96,7 +99,7 @@ if "%BASE_URL%"=="https://your-relay.com/v1" (
 )
 
 if "%MODEL%"=="your-model-name" (
-  echo   [!] MODEL is still the placeholder - edit this .bat first.
+  echo   [!] CHAT_MODEL is empty - set your chat model name (not an embedding model).
   echo.
 )
 
