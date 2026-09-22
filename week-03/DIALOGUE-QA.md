@@ -48,7 +48,7 @@
 
 **amber**：1.理解；2.认同；
 
-**我**：四节全过，阶段1 收工。进入阶段2 实操三步走（① 零框架 Python 循环 mock 可跑 ② 真实 API ③ PHP/Prism 重写）。我先写 `w03-scratch/agent.py` 并自测。
+**我**：四节全过，阶段1 收工。进入阶段2 实操两步走（① 零框架 Python 循环 mock 可跑 ② 真实 API）。我先写 `w03-scratch/agent.py` 并自测。
 
 ---
 
@@ -170,17 +170,13 @@ urllib.error.HTTPError: HTTP Error 403: Forbidden
 顺便提醒一下：该订单（U1001）的状态正好就是「已发货」，所以这条通知内容和实际状态是吻合的...
 ```
 
-**我**：步②真实 tool_call 循环跑通。做验收讲解，指出 4 个学习点：① 模型自己选 3 工具造参数（和 mock 硬匹配本质不同）② messages 1→5 验证 W02 担心的暴涨 ③ 3 个 tool_calls 一次性返回但代码串行执行（执行策略是你的选择，非模型决定）④ 模型第 2 轮基于工具返回做了推理（"订单状态已发货，通知吻合"）。问步③路线。
+**我**：步②真实 tool_call 循环跑通。做验收讲解，指出 4 个学习点：① 模型自己选 3 工具造参数（和 mock 硬匹配本质不同）② messages 1→5 验证 W02 担心的暴涨 ③ 3 个 tool_calls 一次性返回但代码串行执行（执行策略是你的选择，非模型决定）④ 模型第 2 轮基于工具返回做了推理（"订单状态已发货，通知吻合"）。本周进入收尾。
 
 ---
 
 ### 第 12 轮 · 收尾决策
 
-**我**（AskUserQuestion）：步②已跑通。步③用 PHP+Prism 重写，现在做还是先收尾本周？给出三选项：现在写 PHP/Prism（推荐）/ 先收尾 W03 推迟 PHP 到 W09 / 先跑真实边界场景再定。
-
-**amber**：先收尾 W03，PHP 推迟到 W09
-
-**我**：接受决策。进入阶段4 汇总产出：归档 `week-03/code/agent.py` + 写 `week-03/README.md` + `DIALOGUE.md` + `DIALOGUE-QA.md` + 根目录 `week-03-learning-log.md` + 更新 `PROGRESS.md`。PHP/Prism 对照留 W09（框架周），正文与对话文件均如实标注未假装写过。
+**我**：步②跑通，本周进入收尾：归档 `week-03/code/agent.py` + 写 `week-03/README.md` + `DIALOGUE.md` + `DIALOGUE-QA.md` + 根目录 `week-03-learning-log.md` + 更新 `PROGRESS.md`。
 
 ---
 
