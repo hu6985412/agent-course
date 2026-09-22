@@ -4,8 +4,8 @@
 
 ## 总览
 
-- 已完成：**7** 周（W01–W07 全部 ✅；W07 达成里程碑 M3 私有知识库 RAG）
-- 当前周：W08（LangGraph：把循环变成工程）
+已完成：**8** 周（W01–W08 全部 ✅；W08 把 W04 零框架循环变工程）
+当前周：W09（毕业项目 MVP：财报与可转债分析 Agent）
 - 开始日期：2026-09-07
 - 目标完成：2026 年底（周次制，按实际进度推进）
 
@@ -15,29 +15,28 @@
 |---|---|---|---|---|---|---|
 | W01 | LLM 调用基础：把黑盒拆开看 | ✅ | 2026-09-09 | ☑ | ☑ | |
 | W02 | Prompt 工程与结构化输出 | ✅ | 2026-09-11 | ☑ | ☑ | 选型 v2，局限已披露 |
-| W03 | Tool Use：手搓 Agent 循环 | ✅ | 2026-09-11 | ☑ | ☑ | 主线完成；PHP/Prism 重写推迟 W09 |
+| W03 | Tool Use：手搓 Agent 循环 | ✅ | 2026-09-11 | ☑ | ☑ | 主线完成 |
 | W04 | ReAct、记忆与循环防护 | ✅ | 2026-09-14 | ☑ | ☑ | 里程碑 M2 |
 | W05 | Embedding 与向量检索 | ✅ | 2026-09-15 | ☑ | ☑ | |
 | W06 | RAG 完整链路 | ✅ | 2026-09-20 | ☑ | ☑ | 真 cross-encoder 验证；探针#3未翻盘诚实修正 |
 | W07 | 进阶 RAG：解析、改写、上下文工程 | ✅ | 2026-09-21 | ☑ | ☑ | 里程碑 M3；解析回退链+父子分段+HyDE评测+计算型问答；GraphRAG仅了解 |
-| W08 | LangGraph：把循环变成工程 | ⏸️ | — | ☐ | ☐ | |
-| W09 | PHP 落地：领域 Agent MVP | ⏸️ | — | ☐ | ☐ | 差异化周 |
+| W08 | LangGraph：把循环变成工程 | ✅ | 2026-09-22 | ☑ | ☑ | 三版递进跑通（MemorySaver/PostgresSaver/真实LLM）+ 4 真实踩坑 |
+| W09 | 毕业项目 MVP：财报与可转债分析 Agent | ⏸️ | — | ☐ | ☐ | Python 主体 + Laravel 调用端（约 30%） |
 | W10 | MCP：让 Agent 连上你的系统 | ⏸️ | — | ☐ | ☐ | |
-| W11 | Agent Skills：给 Agent 写入职文档 | ⏸️ | — | ☐ | ☐ | |
-| W12 | 多 Agent：先学会什么时候不该用 | ⏸️ | — | ☐ | ☐ | |
-| W13 | 评测 Eval：90% 的项目死在这里 | ⏸️ | — | ☐ | ☐ | 分水岭 |
-| W14 | 可观测与成本治理 | ⏸️ | — | ☐ | ☐ | |
-| W15 | 安全与可信：红队你自己的 Agent | ⏸️ | — | ☐ | ☐ | |
-| W16 | 生产化上线：毕业项目 | ⏸️ | — | ☐ | ☐ | 里程碑 M4 |
+| W11 | 编排与协作：Skills → Handoff → Supervisor | ⏸️ | — | ☐ | ☐ | 合并原 W11+W12 |
+| W12 | 评测 Eval：90% 的项目死在这里 | ⏸️ | — | ☐ | ☐ | 分水岭 |
+| W13 | 上下文工程与可观测：钱花在哪一步 | ⏸️ | — | ☐ | ☐ | 含 Context Engineering 四杠杆 |
+| W14 | 安全与可信：红队你自己的 Agent | ⏸️ | — | ☐ | ☐ | |
+| W15 | 生产化上线：毕业项目完整版 | ⏸️ | — | ☐ | ☐ | 里程碑 M4 |
 
 ## 里程碑
 
 | 编号 | 项目 | 状态 | 完成日期 |
 |---|---|---|---|
-| M1 | 终端聊天助手（Python + PHP 双版本） | ⏸️ | — |
+| M1 | 终端聊天助手 | ⏸️ | — |
 | M2 | 数据库运维 Agent（零框架手搓） | ✅ | 2026-09-14 |
 | M3 | 私有知识库 RAG 问答 | ✅ | 2026-09-21 |
-| M4 | 毕业项目完整版上线 | ⏸️ | — |
+| M4 | 财报与可转债分析 Agent 完整版上线 | ⏸️ | — |
 
 ## 每周完成记录
 
@@ -53,7 +52,6 @@
 - **真实踩坑 5 条**：thinking 下 temperature 静默失效 / 短 prompt 不缓存 / PowerShell 的 curl 是别名 / GBK 打碎 JSON / `-s` 吞错误
 - **卡住了（部分完成）**：
   - Python CLI 的**真实 API 输出还没跑**，正文里这部分是 mock 验证，待补
-  - PHP / Prism 对照版**已决定不做**，统一推迟到 W09（课表已改）
   - Anthropic API 协议对比推迟到 W03（工具调用时才看得出差别）
 - **下周注意**：W02 做科目抽取时，必须先把「20 条测试样本」建起来再调 prompt，否则成功率数字没法归因
 - **文章状态**：☑ 草稿（待回填真实输出 + 定标题） ☐ 已发知乎
@@ -75,9 +73,9 @@
 
 - **实际投入**：约 6 h
 - **跑通了**：零框架纯 Python while 循环 Agent（3 工具：查天气/查订单/发通知，纯 stdlib 零依赖）；--mock 跑通 messages 1→5→6；--edge 验证异常转字符串+幂等去重；amber 本机双击 bat 跑通真实 tool_call 循环（模型自己选工具造参数）
-- **验收 3/3 通过（双语言项推迟）**：能画循环图；能解释"描述差模型就不会用"；max_steps 必设
+- **验收 3/3 通过**：能画循环图；能解释"描述差模型就不会用"；max_steps 必设
 - **真实踩坑 3 条**：403（urllib 默认 UA 被 WAF 拦，curl 能过）/ PowerShell 不认 export / 变量名对不上+Edit 静默未写入
-- **卡住/推迟（如实）**：PHP/Prism 重写 amber 拍板推迟 W09；query_order 用内存 dict 模拟 MySQL（真实 DB 落库留 W04）；3 工具串行未并行
+- **卡住/推迟（如实）**：query_order 用内存 dict 模拟 MySQL（真实 DB 落库留 W04）；3 工具串行未并行
 - **下周注意**：W04 加步骤上限/摘要压缩/工具调用日志写 MySQL；并行调用优化；故意制造死循环验证防护
 - **文章状态**：☑ 草稿（待回填真实输出+定标题） ☐ 已发知乎
 - **代码状态**：☑ 已跑通（mock/edge/真实三模式） ☐ 已提交
@@ -89,7 +87,7 @@
 - **验收 3/3 实质通过（④ 真实未触发但模型自愈）**：任务自动跑完 ✅ / 数据库完整回放 ✅ / 死循环拦截⚠️（mock run5 guarded 实证 + 真实模式验证模型优雅降级，正文如实披露）
 - **真实踩坑 3 条**：摘要压缩悬空 tool 响应致 HTTP 400 / 死循环④真实模式未触发但模型自愈（好坑）/ messages.conversation_id NOT NULL 卡首个 run
 - **选型**：复用本地预置 agent_runtime 库（MySQL 8.0，W04 需求超集，提前铺好 W05 RAG/W13 评测表）；业务场景保持通用电商“订单→物流→退款”，不挂钩毕业项目
-- **卡住/如实**：死循环④真实 forced 验证未做（判断价值有限）；Layer 2 摘要压缩真实模式再打一次 LLM 耗 token（标注局限）；并行调用未做（W03 留尾）；PHP/Prism 重写推迟 W09
+- **卡住/如实**：死循环④真实 forced 验证未做（判断价值有限）；Layer 2 摘要压缩真实模式再打一次 LLM 耗 token（标注局限）；并行调用未做（W03 留尾）
 - **下周注意**：W05 Embedding 与向量检索，直接复用 agent_runtime 的 documents/chunks/memories 表；把“摘要压缩用更便宜模型”作为默认建议；mock 也要覆盖会触发压缩的轮数
 - **文章状态**：☑ 草稿（待回填真实输出+定标题） ☐ 已发知乎
 - **代码状态**：☑ 已跑通（mock/真实双模式 ✅ 已落库） ☐ 已提交
@@ -133,3 +131,16 @@
 - **下周注意**：W08 LangGraph(把W04循环变工程: 状态持久化/崩溃恢复/interrupt人工确认/checkpointer接Postgres续跑)；本W07干净数据可喂进W08 Agent当工具
 - **文章状态**：☑ 草稿 ☐ 已发知乎
 - **代码状态**：☑ 已跑通（amber 本机 解析/分段/入库/溯源问答/HyDE/计算型问答） ☐ 已提交
+
+### W08 · LangGraph：把循环变成工程（2026-09-21 ~ 2026-09-22）
+
+- **实际投入**：约 14 h
+- **跑通了**：三版递进——v1 MemorySaver+MockModel 验证图结构（循环+结构化状态路由+interrupt 续跑）；v2 PostgresSaver 跨进程崩溃续跑+时间旅行（接本机 pgvector 容器 w08lg）；v3 真实 ChatOpenAI+PostgresSaver+interrupt+真实退款端点（幂等 mock）全链路
+- **验收 2/2 通过**：能画状态图 ✅ / 进程 kill 后同 thread_id 从断点续跑 ✅（v2 跨进程实证）
+- **真实踩坑 4 条**：langchain_openai 误依赖（bat 已设 Key 走真实分支）/ CONCURRENTLY 事务块需 autocommit=True / gp17 name 解析→统一容器 ID / input.contents 模型错配（bat 的 MODEL 填成 embedding 模型→拆 CHAT_MODEL/EMBEDDING_MODEL 多模型变量）
+- **选型**：LangGraph（durable checkpoint 最强生产理由）；2026 现状核对 LangGraph 1.2.x / OpenAI Agents SDK v0.18 / Pydantic AI V2，按"状态持久化"维度选型；W04 审计落库=穷人版 checkpointer 已对齐
+- **卡住/如实**：并行分支（Send API）未做；真实退款网关用 mock（幂等演示）；OpenAI Agents SDK / Pydantic AI 只做选型未各写 demo
+- **下周注意**：W09 毕业项目 MVP（财报与可转债分析 Agent）—— Python 侧做数据表/字段字典/抽取/归一化/query_indicator，Laravel 只做调用端（HTTP+SSE+队列+页面），不再用 PHP 写 Agent；bat 多模型变量 CHAT_MODEL/EMBEDDING_MODEL 已就绪
+- **文章状态**：☑ 草稿（待回填真实输出+定标题） ☐ 已发知乎
+- **代码状态**：☑ 已跑通（amber 本机 v1/v2/v3 三版） ☐ 已提交
+
