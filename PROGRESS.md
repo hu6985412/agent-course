@@ -4,7 +4,7 @@
 
 ## 总览
 
-已完成：**8** 周（W01–W08 全部 ✅；W08 把 W04 零框架循环变工程）
+已完成：**9** 周（W01–W09 全部 ✅；W09 毕业项目 MVP 数据地基打通）
 当前周：W09（毕业项目 MVP：财报与可转债分析 Agent）
 - 开始日期：2026-09-07
 - 目标完成：2026 年底（周次制，按实际进度推进）
@@ -21,7 +21,7 @@
 | W06 | RAG 完整链路 | ✅ | 2026-09-20 | ☑ | ☑ | 真 cross-encoder 验证；探针#3未翻盘诚实修正 |
 | W07 | 进阶 RAG：解析、改写、上下文工程 | ✅ | 2026-09-21 | ☑ | ☑ | 里程碑 M3；解析回退链+父子分段+HyDE评测+计算型问答；GraphRAG仅了解 |
 | W08 | LangGraph：把循环变成工程 | ✅ | 2026-09-22 | ☑ | ☑ | 三版递进跑通（MemorySaver/PostgresSaver/真实LLM）+ 4 真实踩坑 |
-| W09 | 毕业项目 MVP：财报与可转债分析 Agent | ⏸️ | — | ☐ | ☐ | Python 主体 + Laravel 调用端（约 30%） |
+| W09 | 毕业项目 MVP：财报与可转债分析 Agent | ✅ | 2026-09-23 | ☑ | ☑ | 双运行时打通+L1-L4归一化零误匹配+Laravel SSE三坑修复 |
 | W10 | MCP：让 Agent 连上你的系统 | ⏸️ | — | ☐ | ☐ | |
 | W11 | 编排与协作：Skills → Handoff → Supervisor | ⏸️ | — | ☐ | ☐ | 合并原 W11+W12 |
 | W12 | 评测 Eval：90% 的项目死在这里 | ⏸️ | — | ☐ | ☐ | 分水岭 |
@@ -144,3 +144,15 @@
 - **文章状态**：☑ 草稿（待回填真实输出+定标题） ☐ 已发知乎
 - **代码状态**：☑ 已跑通（amber 本机 v1/v2/v3 三版） ☐ 已提交
 
+### W09 · 毕业项目 MVP：财报与可转债分析 Agent（2026-09-22 ~ 2026-09-23）
+
+- **实际投入**：约 16 h
+- **跑通了**：双运行时（Python FastAPI+LangGraph 核心 + Laravel 12 接入层）；5 表建库+字段字典冷启动；normalize 四级匹配(L1-L4)+否定词保护+易混淆组+近似指标守卫；LangGraph DAG(classify→extract→human_review interrupt→normalize_persist→verify)+同 thread_id 续跑；FastAPI SSE + Guzzle + Laravel Response::stream 全链路；3 家 demo 公司(茅台/宁德/比亚迪)零误匹配验证
+- **验收 3/3 通过(实质)**：3 家跑通链路 ✅ / 扣非归母零误匹配 ✅(verify zero_mismatch:true, 6 科目全 L1) / Laravel 页面逐帧流式中间过程 ✅
+- **真实踩坑 4 条**：Laravel 协变500 / PSR-7 Stream 不可遍历(空body) / ob_flush 无缓冲警告(只出首帧) / Python auto_approve 落盘500
+- **amber 两次关键纠偏**：① 净利润不该为演示强行划 unknown(改 unknown 设计哲学) ② 稀释每股收益被 L3 误配 BASIC_EPS(暴露真 bug，新增 DILUTED_EPS+近似指标守卫)
+- **选型**：双运行时单编排栈(Python 唯一智能源，Laravel 纯转发)；规则版 extract(MVP 不调 LLM，验证编排/归一化/流式)；MVP 硬编码样本(year 未真实筛选)
+- **卡住/如实(预期内 gap，非 bug)**：persist 未幂等去重 / 可转债分析未做(留 W11+W15) / Laravel Queue 未接 / NL2SQL 问数端点未实装 / 真实 LLM 抽取未做(docling 留后续)
+- **下周注意**：W10 MCP 把 query_indicator 包成 FastMCP Server，Laravel 从 SSE 转发升级为 MCP 客户端；W13 点名给 W09 双端加 trace 落 MySQL
+- **文章状态**：☑ 草稿（待回填真实输出+定标题） ☐ 已发知乎
+- **代码状态**：☑ 已跑通（amber 本机浏览器 6 帧 SSE + zero_mismatch:true） ☐ 已提交
