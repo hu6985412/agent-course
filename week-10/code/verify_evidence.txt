@@ -1,0 +1,9 @@
+[1] 已注册工具: ['query_indicator']
+[2] fin://schema 读取成功: 共 11 个标准科目 code
+    首行示例: OPER_REV = 营业总收入
+[3] call_tool('query_indicator', 600519/2025/NP_PARENT) 实查结果:
+    {'company': '贵州茅台', 'code': '600519', 'year': 2025, 'matched_code': 'NP_PARENT', 'value': '86228000000.000000', 'unit': '元', 'method': 'L1', 'confidence': '1.0000'}
+[4] 已注册 Prompts: ['生成财报周报']
+[5] get_prompt('生成财报周报', 600519/2025) 渲染首行: 请为股票 600519 的 2025 年度报告撰写一份财报周报。
+
+结论: tool 注册 + resource 读取 + 真实查库 链路全部跑通（非优雅报错，是真数据）
