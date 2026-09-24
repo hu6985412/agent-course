@@ -1,0 +1,13 @@
+[
+  {"code":"OPER_REV","name":"营业总收入","aliases":["营业总收入","营业收入","主营业务收入","营收","营业总收入(元)"],"unit_standard":"元","unit_convert":1,"confusing_group":null,"requires_modifier_guard":0},
+  {"code":"NET_PROFIT","name":"净利润","aliases":["净利润","净利润(合并报表)","合并净利润","净利润(元)","净利润（扣非前）"],"unit_standard":"元","unit_convert":1,"confusing_group":"NP","requires_modifier_guard":0},
+  {"code":"NP_PARENT","name":"归母净利润","aliases":["归母净利润","归属于上市公司股东的净利润","归属母公司股东的净利润","归属于母公司所有者的净利润","归属于上市公司股东的净利润(元)"],"unit_standard":"元","unit_convert":1,"confusing_group":"NP","requires_modifier_guard":0},
+  {"code":"NP_DEDUCT","name":"扣非归母净利润","aliases":["扣非归母净利润","归属母公司股东的扣除非经常性损益的净利润","归属于上市公司股东的扣除非经常性损益的净利润","扣除非经常性损益后的净利润","扣非净利润"],"unit_standard":"元","unit_convert":1,"confusing_group":"NP","requires_modifier_guard":1},
+  {"code":"TOTAL_ASSETS","name":"总资产","aliases":["总资产","资产总计","资产合计"],"unit_standard":"元","unit_convert":1,"confusing_group":null,"requires_modifier_guard":0},
+  {"code":"TOTAL_LIAB","name":"总负债","aliases":["总负债","负债合计","负债总额"],"unit_standard":"元","unit_convert":1,"confusing_group":null,"requires_modifier_guard":0},
+  {"code":"EQUITY_PARENT","name":"归母净资产","aliases":["归属母公司股东的净资产","归属于上市公司股东的净资产","归母净资产","所有者权益合计"],"unit_standard":"元","unit_convert":1,"confusing_group":null,"requires_modifier_guard":0},
+  {"code":"OP_CASHFLOW","name":"经营活动现金流量净额","aliases":["经营活动产生的现金流量净额","经营现金流","经营活动现金净流入","经营活动现金流量净额"],"unit_standard":"元","unit_convert":1,"confusing_group":null,"requires_modifier_guard":0},
+  {"code":"ROE","name":"净资产收益率","aliases":["净资产收益率","ROE","加权平均净资产收益率"],"unit_standard":"%","unit_convert":1,"confusing_group":null,"requires_modifier_guard":0},
+  {"code":"BASIC_EPS","name":"基本每股收益","aliases":["基本每股收益","每股收益(基本)","EPS"],"unit_standard":"元","unit_convert":1,"confusing_group":null,"requires_modifier_guard":0},
+  {"code":"DILUTED_EPS","name":"稀释每股收益","aliases":["稀释每股收益","摊薄每股收益"],"unit_standard":"元","unit_convert":1,"confusing_group":null,"requires_modifier_guard":0}
+]
