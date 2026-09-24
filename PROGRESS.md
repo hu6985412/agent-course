@@ -4,8 +4,8 @@
 
 ## 总览
 
-已完成：**9** 周（W01–W09 全部 ✅；W09 毕业项目 MVP 数据地基打通）
-当前周：W09（毕业项目 MVP：财报与可转债分析 Agent）
+已完成：**10** 周（W01–W09 全部 ✅；W09 毕业项目 MVP 数据地基打通）
+当前周：W11（编排与协作：Skills → Handoff → Supervisor）
 - 开始日期：2026-09-07
 - 目标完成：2026 年底（周次制，按实际进度推进）
 
@@ -22,7 +22,7 @@
 | W07 | 进阶 RAG：解析、改写、上下文工程 | ✅ | 2026-09-21 | ☑ | ☑ | 里程碑 M3；解析回退链+父子分段+HyDE评测+计算型问答；GraphRAG仅了解 |
 | W08 | LangGraph：把循环变成工程 | ✅ | 2026-09-22 | ☑ | ☑ | 三版递进跑通（MemorySaver/PostgresSaver/真实LLM）+ 4 真实踩坑 |
 | W09 | 毕业项目 MVP：财报与可转债分析 Agent | ✅ | 2026-09-23 | ☑ | ☑ | 双运行时打通+L1-L4归一化零误匹配+Laravel SSE三坑修复 |
-| W10 | MCP：让 Agent 连上你的系统 | ⏸️ | — | ☐ | ☐ | |
+| W10 | MCP：让 Agent 连上你的系统 | ✅ | 2026-09-23 | ☑ | ☑ | 1 Server(三原语全)+stdio Inspector 验证；Streamable HTTP(stateless) 远程全链路已走通(httpx 调端, 茅台 862.28亿)；第2 Server/Tasks 留 W11 |
 | W11 | 编排与协作：Skills → Handoff → Supervisor | ⏸️ | — | ☐ | ☐ | 合并原 W11+W12 |
 | W12 | 评测 Eval：90% 的项目死在这里 | ⏸️ | — | ☐ | ☐ | 分水岭 |
 | W13 | 上下文工程与可观测：钱花在哪一步 | ⏸️ | — | ☐ | ☐ | 含 Context Engineering 四杠杆 |
@@ -143,6 +143,18 @@
 - **下周注意**：W09 毕业项目 MVP（财报与可转债分析 Agent）—— Python 侧做数据表/字段字典/抽取/归一化/query_indicator，Laravel 只做调用端（HTTP+SSE+队列+页面），不再用 PHP 写 Agent；bat 多模型变量 CHAT_MODEL/EMBEDDING_MODEL 已就绪
 - **文章状态**：☑ 草稿（待回填真实输出+定标题） ☐ 已发知乎
 - **代码状态**：☑ 已跑通（amber 本机 v1/v2/v3 三版） ☐ 已提交
+
+### W10 · MCP：让 Agent 连上你的系统（2026-09-23）
+
+- **实际投入**：约 6 h（引导+实操+反馈+收尾；B 步 Streamable HTTP 实测含排错）
+- **跑通了**：FastMCP v4 把 W09 的 query_indicator 包成第一个 MCP Server（@mcp.tool + @mcp.resource fin://schema + @mcp.prompt 生成财报周报），业务逻辑零重写；无头验证（in-memory Client）+ amber 本机 Inspector 双重通过，真查到茅台 2025 归母净利 862.28 亿（L1, conf 1.0）；Streamable HTTP(stateless) 远程全链路已走通——`MCP_MODE=http` 起服务 + `fin_agent_client.py`(httpx 手写 MCP 协议) 调端，实查茅台 2025 归母净利 862.28 亿（L1, conf 1.0）
+- **验收 全部通过**：三原语齐全 ✅ / 两种传输+2026-07-28 规范讲透 ✅ / stdio Inspector 验证 ✅ / 说一句话查指标拿真数 ✅ / Streamable HTTP 完整 round-trip ✅（stateless + httpx 调端，绕开 FastMCP v4 Client 的 URL 拼接 bug）
+- **真实踩坑 4 条**：managed venv 损坏半安装包 ~yper 干扰 pip / FastMCP v4 dev 必须加 inspector 子命令 / Inspector Arguments 栏 .\ 路径被吃掉变隐藏文件 / read_resource 返回属性是 .text 非 .content
+- **选型**：FastMCP v4.0.3（pin 版本，避 v3→v4 大改写）+ 复用 W09 fin_agent 库与 query_indicator，MCP 薄壳不重写业务逻辑
+- **踩坑（已解决，如实）**：① FastMCP v4.0.3 streamable-http Client 第二个请求把完整 URL 再拼一次→404（client/server 配合 bug），改用 httpx 手写 JSON-RPC 绕过；② 客户端连错端口（MCP_BASE 只设给子进程没给当前进程）导致 tools/list 返回空，已修复；第2 个 Server（调业务 API）与 Tasks 长任务未做（课表规划，留 W11/毕业项目）
+- **下周注意**：W11 补第2 个 MCP Server（调业务 API）+ 用 FastMCP v4 匹配版本把 Streamable HTTP 完整 round-trip 跑通（或排查 v4 session 保持）；W09 Laravel 调用端从 SSE 转发升级为 MCP Client 消费本 Server 留毕业项目延展
+- **文章状态**：☑ 草稿 ☐ 已发知乎
+- **代码状态**：☑ 已跑通（stdio + 无头验证） ☐ 已提交
 
 ### W09 · 毕业项目 MVP：财报与可转债分析 Agent（2026-09-22 ~ 2026-09-23）
 
