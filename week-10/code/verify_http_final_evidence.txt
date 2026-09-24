@@ -1,0 +1,8 @@
+[0] 启动 HTTP 服务子进程 pid=51888 (MCP_MODE=http, stateless, port=8123)
+[1] 端口 8123 就绪: True
+[2] initialize -> session_id=None
+[3] list_tools 返回: ['query_indicator']
+[4] call_tool(query_indicator, 600519/2025/NP_PARENT):
+    {'company': '贵州茅台', 'code': '600519', 'year': 2025, 'matched_code': 'NP_PARENT', 'value': '86228000000.000000', 'unit': '元', 'method': 'L1', 'confidence': '1.0000'}
+[5] 结论: HTTP(stateless) 模式下 fin-agent(httpx) 调用端 initialize+list_tools+call_tool 全链路走通 ✅
+[6] 已终止服务子进程 pid=51888
